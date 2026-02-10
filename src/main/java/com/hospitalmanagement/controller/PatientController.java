@@ -26,4 +26,14 @@ public class PatientController {
         System.out.println("Creating a new patient");
         return patient;
     }
+
+    @PutMapping("/update/{id}")
+    public void updatePatient(@PathVariable Long id) {
+        System.out.println("Updating a patient");
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletePatient(@PathVariable Long id) {
+        System.out.println("Deleting a patient");
+    }
 }
