@@ -22,4 +22,6 @@ public class Bill {
     private long doctorId;
     private String date;
     private String patientname;
+
+
 }
