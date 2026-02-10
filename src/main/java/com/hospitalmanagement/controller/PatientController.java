@@ -1,15 +1,15 @@
 package com.hospitalmanagement.controller;
 
-import com.hospitalmanagement.models.Patient;
+import com.hospitalmanagement.entity.Patient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/patients")
+@RequestMapping("/api/v1/patient")
 public class PatientController {
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Patient> getAllPatients() {
         System.out.println("Getting all patients");
         return null;
