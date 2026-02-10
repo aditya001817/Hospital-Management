@@ -28,4 +28,14 @@ public class DoctorController {
         System.out.println("Creating Doctor");
         return doctor;
     }
+
+    @PutMapping("/update/{id}")
+    public void updateDoctor(@PathVariable Long id) {
+        System.out.println("Updating Doctor "+id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteDoctor(@PathVariable Long id) {
+        System.out.println("Deleting Doctor "+id);
+    }
 }
