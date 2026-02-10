@@ -17,7 +17,7 @@ public class PatientController {
 
     @GetMapping("/{id}")
     public Patient getPatientById(@PathVariable Long id) {
-        System.out.println("Getting patient by id: ");
+        System.out.println("Getting patient by id: "+id);
         return null;
     }
 
@@ -29,11 +29,11 @@ public class PatientController {
 
     @PutMapping("/update/{id}")
     public void updatePatient(@PathVariable Long id) {
-        System.out.println("Updating a patient");
+        System.out.println("Updating patient "+id);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deletePatient(@PathVariable Long id) {
-        System.out.println("Deleting a patient");
+        System.out.println("Deleting patient "+id);
     }
 }
