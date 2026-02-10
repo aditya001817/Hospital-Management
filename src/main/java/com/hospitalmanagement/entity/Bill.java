@@ -23,5 +23,4 @@ public class Bill {
     private String date;
     private String patientname;
 
-
 }
