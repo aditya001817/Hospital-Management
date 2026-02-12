@@ -11,25 +11,53 @@ import java.util.List;
 public class BillService {
 
     public List<Bill> getAllBills() {
-        System.out.println("Into Service layer all Bills");
-        return null;
+        try {
+            System.out.println("Into Service layer all Bills");
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
-    public Bill getBillById( Long id) {
-        System.out.println("Into Service layer  Bill by id: "+id);
-        return null;
+    public Bill getBillById(Long id) {
+        try {
+            System.out.println("Into Service layer  Bill by id: "+id);
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
-    public Patient createBill( Patient patient) {
-        System.out.println("Into Service layer Creating a new Bill");
-        return patient;
+    public Patient createBill(Patient patient) {
+        try {
+            System.out.println("Into Service layer Creating a new Bill");
+            return patient;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
-    public void updateBill( Long id) {
-        System.out.println("Into Service layer Updating Bill "+id);
+    public void updateBill(Long id) {
+        try {
+            System.out.println("Into Service layer Updating Bill "+id);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
-    public void deleteBill( Long id) {
-        System.out.println("Into Service layer Deleting Bill "+id);
+    public void deleteBill(Long id) {
+        try {
+            System.out.println("Into Service layer Deleting Bill "+id);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
