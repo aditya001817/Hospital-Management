@@ -1,5 +1,4 @@
 package com.hospitalmanagement.service;
 
-public class PatientService {
-
+public class DoctorService {
 }
