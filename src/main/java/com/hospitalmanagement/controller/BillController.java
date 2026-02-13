@@ -35,7 +35,7 @@ public class BillController {
     }
 
     @PutMapping("/update/{id}")
-    public void updateBill(@PathVariable Long id) {
+    public void updateBill(@PathVariable Long id, @RequestBody Bill bill) {
         System.out.println("Updating Bill "+id);
         billService.updateBill(id);
     }
