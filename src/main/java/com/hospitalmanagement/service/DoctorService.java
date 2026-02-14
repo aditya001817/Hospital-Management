@@ -32,9 +32,20 @@ public class DoctorService {
         return doctor;
     }
 
-    public void updateDoctor(Long id) {
-
+    public Doctor updateDoctor(Long id, Doctor updatedDoctor) {
         System.out.println("Into service layer Doctors");
+        Optional<Doctor> existingDoctor = doctorRepository.findById(id);
+        if(existingDoctor.isPresent()) {
+            Doctor doctor =  existingDoctor.get();
+            doctor.setName(updatedDoctor.getName());
+            doctor.setSpeciality(updatedDoctor.getSpeciality());
+            doctor.setAge(updatedDoctor.getAge());
+            doctorRepository.save(doctor);
+        }
+        else{
+            System.out.println("Doctor not found");
+        }
+        return updatedDoctor;
     }
 
     public void deleteDoctor(Long id) {

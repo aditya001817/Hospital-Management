@@ -37,7 +37,7 @@ public class DoctorController {
     @PutMapping("/update/{id}")
     public void updateDoctor(@PathVariable Long id,  @RequestBody Doctor updatedDoctor) {
         System.out.println("Updating Doctor "+id);
-        doctorService.updateDoctor(id);
+        doctorService.updateDoctor(id, updatedDoctor);
     }
 
     @DeleteMapping("/delete/{id}")
