@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DoctorService {
@@ -16,20 +17,23 @@ public class DoctorService {
 
     public List<Doctor> getAllDoctors() {
         System.out.println("Into service layer Doctors");
-        return null;
+        return doctorRepository.findAll();
     }
 
     public Doctor getDoctorById(Long id) {
         System.out.println("Into service layer Doctors");
-        return null;
+        Optional<Doctor> doctor = doctorRepository.findById(id);
+        return doctor.get();
     }
 
     public Doctor createDoctor(Doctor doctor) {
         System.out.println("Into service layer Doctors");
-        return null;
+        doctorRepository.save(doctor);
+        return doctor;
     }
 
     public void updateDoctor(Long id) {
+
         System.out.println("Into service layer Doctors");
     }
 
