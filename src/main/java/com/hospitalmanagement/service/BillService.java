@@ -2,13 +2,19 @@ package com.hospitalmanagement.service;
 
 import com.hospitalmanagement.entity.Bill;
 import com.hospitalmanagement.entity.Patient;
+import com.hospitalmanagement.repository.BillRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BillService {
+
+    @Autowired
+    private BillRepository billRepository;
 
     public List<Bill> getAllBills() {
         try {
@@ -46,6 +52,17 @@ public class BillService {
     public void updateBill(Long id, Bill updatedBill) {
         try {
             System.out.println("Into Service layer Updating Bill "+id);
+            Optional<Bill> existingBill = billRepository.findById(id);
+            if(existingBill.isPresent()) {
+                Bill bill = existingBill.get();
+                bill.setAmount(updatedBill.getAmount());
+                bill.setPatientid(updatedBill.getPatientid());
+                bill.setPatientname(updatedBill.getPatientname());
+                bill.setDoctorName(updatedBill.getDoctorName());
+            }
+            else{
+                System.out.println("Bill Not Found");
+            }
         }
         catch (Exception e) {
             System.out.println(e);
