@@ -19,7 +19,7 @@ public class BillService {
     public List<Bill> getAllBills() {
         try {
             System.out.println("Into Service layer all Bills");
-            return null;
+            return billRepository.findAll();
         }
         catch (Exception e) {
             System.out.println(e);
@@ -30,7 +30,7 @@ public class BillService {
     public Bill getBillById(Long id) {
         try {
             System.out.println("Into Service layer  Bill by id: "+id);
-            return null;
+            return billRepository.findById(id).get();
         }
         catch (Exception e) {
             System.out.println(e);
@@ -38,10 +38,10 @@ public class BillService {
         }
     }
 
-    public Patient createBill(Patient patient) {
+    public Bill createBill(Bill bill) {
         try {
             System.out.println("Into Service layer Creating a new Bill");
-            return patient;
+            return billRepository.save(bill);
         }
         catch (Exception e) {
             System.out.println(e);
@@ -72,6 +72,7 @@ public class BillService {
     public void deleteBill(Long id) {
         try {
             System.out.println("Into Service layer Deleting Bill "+id);
+            billRepository.deleteById(id);
         }
         catch (Exception e) {
             System.out.println(e);

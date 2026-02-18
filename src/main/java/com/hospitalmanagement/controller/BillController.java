@@ -29,9 +29,9 @@ public class BillController {
     }
 
     @PostMapping("/create")
-    public Patient createBill(@RequestBody Patient patient) {
+    public Bill createBill(@RequestBody  Bill bill) {
         System.out.println("Creating a new Bill");
-        return billService.createBill(patient);
+        return billService.createBill(bill);
     }
 
     @PutMapping("/update/{id}")
