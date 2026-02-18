@@ -42,7 +42,7 @@ public class AppointmentService {
         }
     }
 
-    public void updateAppointment( Long id) {
+    public void updateAppointment( Long id, Appointment updatedAppointment) {
         try {
             System.out.println("Into Service layer  Getting all appointments");
         }

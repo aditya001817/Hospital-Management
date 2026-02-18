@@ -36,7 +36,7 @@ public class AppointmentController {
     @PutMapping("/update/{id}")
     public void updateAppointment(@PathVariable Long id, @RequestBody Appointment updatedAppointment) {
         System.out.println("Updating appointment "+id);
-        appointmentService.updateAppointment(id);
+        appointmentService.updateAppointment(id, updatedAppointment);
     }
 
     @DeleteMapping("/delete/{id}")

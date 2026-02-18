@@ -43,7 +43,7 @@ public class BillService {
         }
     }
 
-    public void updateBill(Long id) {
+    public void updateBill(Long id, Bill updatedBill) {
         try {
             System.out.println("Into Service layer Updating Bill "+id);
         }
