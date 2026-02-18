@@ -1,6 +1,8 @@
 package com.hospitalmanagement.service;
 
 import com.hospitalmanagement.entity.Appointment;
+import com.hospitalmanagement.repository.AppointmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +10,9 @@ import java.util.List;
 
 @Service
 public class AppointmentService {
+
+    @Autowired
+    private AppointmentRepository appointmentReposiotry;
 
     public List<Appointment> getAllAppointments() {
         try {

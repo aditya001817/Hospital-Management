@@ -4,7 +4,6 @@ import com.hospitalmanagement.entity.Patient;
 import com.hospitalmanagement.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +47,7 @@ public class PatientService {
         }
     }
 
-    public Patient updatePatient(Long id,  Patient updatedPatient) {
+    public void updatePatient(Long id, Patient updatedPatient) {
         try {
             System.out.println("Into the service layer");
             Optional<Patient> existingPatient = patientRepository.findById(id);
@@ -62,10 +61,8 @@ public class PatientService {
             else{
                 System.out.println("Patient not found");
             }
-            return updatedPatient;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return null;
         }
     }
 
