@@ -56,7 +56,7 @@ public class BillService {
             if(existingBill.isPresent()) {
                 Bill bill = existingBill.get();
                 bill.setAmount(updatedBill.getAmount());
-                bill.setPatientid(updatedBill.getPatientid());
+                bill.setPatientId(updatedBill.getPatientId());
                 bill.setPatientname(updatedBill.getPatientname());
                 bill.setDoctorName(updatedBill.getDoctorName());
             }

@@ -16,11 +16,11 @@ import lombok.*;
 public class Bill {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long patientid;
+    private Long patientId;
     private double amount;
     private String doctorName;
     private String date;
+    private Long doctorId;
     private String patientname;
 
 }
