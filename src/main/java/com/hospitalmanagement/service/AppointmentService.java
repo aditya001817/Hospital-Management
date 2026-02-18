@@ -7,17 +7,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService {
 
     @Autowired
-    private AppointmentRepository appointmentReposiotry;
+    private AppointmentRepository appointmentRepository;
 
     public List<Appointment> getAllAppointments() {
         try {
             System.out.println("Into Service layer  Getting all appointments");
-            return null;
+            return appointmentRepository.findAll();
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -25,10 +26,10 @@ public class AppointmentService {
         }
     }
 
-    public Appointment getAppointmentById( Long id) {
+    public Appointment getAppointmentById(Long id) {
         try {
             System.out.println("Into Service layer  Getting all appointments");
-            return null;
+            return appointmentRepository.findById(id).get();
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -39,7 +40,7 @@ public class AppointmentService {
     public Appointment createAppointment( Appointment appointment) {
         try {
             System.out.println("Into Service layer  Getting all appointments");
-            return null;
+            return appointmentRepository.save(appointment);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -50,6 +51,17 @@ public class AppointmentService {
     public void updateAppointment( Long id, Appointment updatedAppointment) {
         try {
             System.out.println("Into Service layer  Getting all appointments");
+            Optional<Appointment> existingAppointment = appointmentRepository.findById(id);
+            if (existingAppointment.isPresent()) {
+                Appointment appointment = existingAppointment.get();
+                appointment.setPatientId(updatedAppointment.getPatientId());
+                appointment.setDate(updatedAppointment.getDate());
+                appointment.setDoctorId(updatedAppointment.getDoctorId());
+                appointment.setId(updatedAppointment.getId());
+            }
+            else {
+                System.out.println("Appointment does not exist");
+            }
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -59,6 +71,7 @@ public class AppointmentService {
     public void deleteAppointment(Long id) {
         try {
             System.out.println("Into Service layer  Getting all appointments");
+            appointmentRepository.deleteById(id);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
