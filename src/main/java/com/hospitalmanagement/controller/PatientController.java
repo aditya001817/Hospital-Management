@@ -22,7 +22,7 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Patient> getPatientById(@PathVariable Long id) {
+    public Patient getPatientById(@PathVariable Long id) {
         System.out.println("Getting patient by id: "+id);
         return patientService.getPatientById(id);
     }

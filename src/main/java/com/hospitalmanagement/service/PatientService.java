@@ -25,11 +25,11 @@ public class PatientService {
     }
 
 
-    public Optional<Patient> getPatientById(Long id) {
+    public Patient getPatientById(Long id) {
         try {
             System.out.println("Into the service layer");
             Optional<Patient> patient = patientRepository.findById(id);
-            return patient;
+            return patient.orElse(null);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

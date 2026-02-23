@@ -29,7 +29,7 @@ public class DoctorService {
         try {
             System.out.println("Into service layer Doctors");
             Optional<Doctor> doctor = doctorRepository.findById(id);
-            return doctor.get();
+            return doctor.orElse(null);
         }
         catch(Exception e) {
             System.out.println(e.getMessage());

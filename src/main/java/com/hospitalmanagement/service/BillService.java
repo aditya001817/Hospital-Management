@@ -3,6 +3,7 @@ package com.hospitalmanagement.service;
 import com.hospitalmanagement.entity.Bill;
 import com.hospitalmanagement.entity.Patient;
 import com.hospitalmanagement.repository.BillRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Log4j2
 @Service
 public class BillService {
 
@@ -30,10 +32,11 @@ public class BillService {
     public Bill getBillById(Long id) {
         try {
             System.out.println("Into Service layer  Bill by id: "+id);
-            return billRepository.findById(id).get();
+            Optional<Bill> bill = billRepository.findById(id);
+            return bill.orElse(null);
         }
         catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
             return null;
         }
     }

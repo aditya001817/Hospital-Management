@@ -29,7 +29,8 @@ public class AppointmentService {
     public Appointment getAppointmentById(Long id) {
         try {
             System.out.println("Into Service layer  Getting all appointments");
-            return appointmentRepository.findById(id).get();
+            Optional<Appointment> appointment = appointmentRepository.findById(id);
+            return appointment.orElse(null);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
