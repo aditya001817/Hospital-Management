@@ -4,6 +4,7 @@ package com.hospitalmanagement.controller;
 import com.hospitalmanagement.entity.Appointment;
 import com.hospitalmanagement.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,9 +17,10 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @GetMapping("/all")
-    public List<Appointment> getAllAppointments() {
+    public Page<Appointment> getAllAppointments(@RequestParam(defaultValue = "0") int page,
+                                                @RequestParam(defaultValue = "2") int size) {
         System.out.println("Getting all appointments");
-        return appointmentService.getAllAppointments();
+        return appointmentService.getAllAppointments(page, size);
     }
 
     @GetMapping("/{id}")

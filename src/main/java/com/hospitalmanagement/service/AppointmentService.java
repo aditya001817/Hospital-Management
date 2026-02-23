@@ -3,6 +3,9 @@ package com.hospitalmanagement.service;
 import com.hospitalmanagement.entity.Appointment;
 import com.hospitalmanagement.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +18,11 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    public List<Appointment> getAllAppointments() {
+    public Page<Appointment> getAllAppointments(int page, int size) {
         try {
             System.out.println("Into Service layer  Getting all appointments");
-            return appointmentRepository.findAll();
+            Pageable pageable = PageRequest.of(page, size);
+            return appointmentRepository.findAll(pageable);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

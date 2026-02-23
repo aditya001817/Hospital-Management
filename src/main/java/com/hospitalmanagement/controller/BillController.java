@@ -5,6 +5,7 @@ import com.hospitalmanagement.entity.Bill;
 import com.hospitalmanagement.entity.Patient;
 import com.hospitalmanagement.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,10 @@ public class BillController {
     BillService billService;
 
     @GetMapping("/all")
-    public List<Bill> getAllBills() {
+    public Page<Bill> getAllBills(@RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "2") int size) {
         System.out.println("Getting all Bills");
-        return billService.getAllBills();
+        return billService.getAllBills(page, size);
     }
 
     @GetMapping("/{id}")

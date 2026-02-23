@@ -3,6 +3,7 @@ package com.hospitalmanagement.controller;
 import com.hospitalmanagement.entity.Doctor;
 import com.hospitalmanagement.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
@@ -17,9 +18,10 @@ public class DoctorController {
     DoctorService doctorService;
 
     @GetMapping("/all")
-    public List<Doctor> getAllDoctors() {
+    public Page<Doctor> getAllDoctors(@RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "2") int size) {
         System.out.println("Getting Doctors");
-        return doctorService.getAllDoctors();
+        return doctorService.getAllDoctors(page, size);
     }
 
     @GetMapping("/{id}")
