@@ -3,10 +3,8 @@ package com.hospitalmanagement.controller;
 import com.hospitalmanagement.entity.Patient;
 import com.hospitalmanagement.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/patient")
@@ -16,9 +14,9 @@ public class PatientController {
     private PatientService patientService;
 
     @GetMapping("/all")
-    public List<Patient> getAllPatients() {
+    public Page<Patient> getAllPatients(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "3") int size) {
         System.out.println("Getting all patients");
-        return patientService.getAllPatients();
+        return patientService.getAllPatients(page, size);
     }
 
     @GetMapping("/{id}")
